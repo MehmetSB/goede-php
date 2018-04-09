@@ -1,44 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-
-	<?php
-	echo "My first PHP script!";
-	?>
-
-
-	<?php
-	// Prints the day
-	echo date("l") . "<br>";
-
-	// Prints the day, date, month, year, time, AM or PM
-	echo date("l jS \of F Y h:i:s A");
-	?>
-<br>
-
-
-<?php
-// $now = new DateTime();
-$dtA = new DateTime('3:05PM');
-$dtB = new DateTime('3:04PM');
-
-if ( $dtA > $dtB ) {
-	$background_color = "red";
-	echo "<body style='background-color:pink'>";
-  echo 'dtA is groter > dan dtB';
-}
-else {
-	$background_color = "blue";
-	echo "<body style='background-color:red'>";
-  echo 'dtA is kleiner < dan dtB';
-}
-
-?>
-
-
-</body>
+<html lang="nl">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<?php
+		date_default_timezone_set('Europe/Amsterdam');
+		$time = date("H:i:s");
+		echo date("H:i:s");
+		if ($time >"06:00" && $time < "12:00")
+		{
+			echo '<body style="background-image: url(./backgrounds/morning.png)">';
+			echo '<h1>Goede morgen!</h1>';
+			echo '<h2>Het is nu ' . $time . '</h2>';
+		}
+		else if ($time >"12:00" && $time < "18:00")
+		{
+			echo '<body style="background-image: url(./backgrounds/afternoon.png)">';
+			echo '<h1>Goede middag!</h1>';
+			echo '<h2>Het is nu ' . $time . '</h2>';
+		}
+		else if ($time >"18:00" && $time < "24:00")
+		{
+			echo '<body style="background-image: url(./backgrounds/evening.png)">';
+			echo '<h1>Goede avond!</h1>';
+			echo '<h2>Het is nu ' . $time . '</h2>';
+		}
+		else if ($time >"00:00" && $time < "06:00")
+		{
+			echo '<body style="background-image: url(./backgrounds/night.png)">';
+			echo '<h1>Goede nacht!</h1>';
+			echo '<h2>Het is nu ' . $time . '</h2>';
+		}
+		?>
+	</body>
 </html>
